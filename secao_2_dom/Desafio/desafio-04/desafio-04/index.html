@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="styles.css">
 <script src="https://unpkg.com/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+
 
 <div id="desafio">
 	<!-- 1) Iniciar a execução do efeito usando botão. 
@@ -9,37 +11,37 @@
 	<h2>#01</h2>
 	<div>
 		<button @click="iniciarEfeito">Iniciar Efeito</button>
-		<div id="efeito" :></div>
+		<div id="efeito" :class="classe1"></div>
 	</div>
-	
+
 	<!-- 2) Crie duas classes CSS e associe a div usando a
 		sintaxe de array -->
 	<h2>#02</h2>
-	<div>Estou sem classe CSS :(</div>
+	<div :class="['azul', 'amarelo']">Estou sem classe CSS :(</div>
 
 	<!-- 3) Aplique na div abaixo a classe informada pelo usuário
 		(crie classe CSS de exemplo). -->
 	<h2>#03</h2>
 	<div>
-		<input type="text">
-		<div></div>
+		<input type="text" v-model="classeCSS">
+		<div :class="classeCSS"></div>
 	</div>
 
 	<!-- 4) Aplique na div abaixo a classe informada pelo usuário e
     outra classe usando o valor true/false (crie classes CSS de exemplo). -->
 	<h2>#04</h2>
 	<div>
-		<input type="text">
-		<input type="text">
-		<div></div>
+		<input type="text" v-model="classe">
+		<input type="text" @input="setVerdadeiro">
+		<div :class="[classe, {verdadeiro}]"></div>
 	</div>
 
 	<!-- 5) Repita 3) mas utilizando estilos ao invés de classes CSS.
     Associe os estilos a div abaixo  -->
 	<h2>#05</h2>
 	<div>
-		<input type="text">
-		<div></div>
+		<input type="text" v-model="cor2">
+		<div :style="[classe2, {backgroundColor: cor2}]"></div>
 	</div>
 
 	<!-- 6) Crie uma barra de progresso simples com setInterval 
