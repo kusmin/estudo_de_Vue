@@ -10,19 +10,24 @@
 
 <body>
     <div id="app">
-        <p v-if="logado">Usuário Logado: {{nome }}</p>
-        <p v-else-if="anonimo">Navegando como Anônimo</p>
-        <p v-else>Nenhum usuário logado</p>
-        <button @click="logado = !logado">{{ logado ? 'Sair' : 'Entrar' }}</button>
-        <input type="checkbox" v-model="anonimo">
+        <ul>
+            <li v-for="cor in cores"> {{ cor }}</li>
+        </ul>
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                nome: 'Renan',
-                logado: false,
-                anonimo: false,
+                cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+                pessoas: [{
+                    nome: 'Ana',
+                    idade: 26,
+                    peso: 89
+                }, {
+                    nome: 'Guilherme',
+                    idade: 22,
+                    peso: 89
+                }]
             }
         })
     </script>

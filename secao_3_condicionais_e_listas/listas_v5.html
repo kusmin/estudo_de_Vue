@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(cor, index) in cores"> {{ index }}) {{ cor }} </li>
+        </ul>
+        <hr>
+        <template v-for="(cor, index) in cores">
+            <h1>
+                {{ cor }}
+            </h1>
+            <p>{{ index }}</p>
+        </template>
+        <hr>
+        <ul>
+            <li v-for="pessoa in pessoas">
+                <span v-for="(valor, chave, index) in pessoa">
+                    {{ chave }} = {{ valor }} ({{ index }})
+                </span>
+            </li>
+        </ul>
+        <hr>
+        <div v-for="n in 10">{{ n }}</div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+                pessoas: [{
+                    nome: 'Ana',
+                    idade: 26,
+                    peso: 89
+                }, {
+                    nome: 'Guilherme',
+                    idade: 22,
+                    peso: 89
+                }]
+            }
+        })
+    </script>
+    <style>
+        ul {
+            list-style: none;
+        }
+        
+        h1,
+        p {
+            display: inline;
+        }
+    </style>
+</body>
+
+</html>
