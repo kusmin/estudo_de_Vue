@@ -3,17 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Mataodor de Monstro</title>
+    <title>Matador de Monstro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;1,100&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/vue"></script>
 </head>
 
 <body>
     <div id="app">
-        <div class="panel scores"></div>
-        <div class="panel result"></div>
+        <div class="panel scores">
+            <div class="score">
+                <h1>Jogador</h1>
+                <div class="life-bar">
+                    <div class="life" :class="{danger: playerLife < 20}" :style="{width: playerLife + '%'}">
+
+                    </div>
+                </div>
+                <div>{{playerLife}}%</div>
+            </div>
+            <div class="score">
+                <h1>Monstro</h1>
+                <div class="life-bar">
+                    <div class="life" :class="{danger: monsterLife < 20}" :style="{width: monsterLife + '%'}">
+
+                    </div>
+                </div>
+                <div>{{monsterLife}}%</div>
+            </div>
+        </div>
+        <div class="panel result" v-if="hasResult">
+            <div v-if="monsterLife == 0" class="win">Você ganhou !!! :)</div>
+            <div v-else class="lose">Você perdeu !!! :(</div>
+        </div>
         <div class="panel buttons"></div>
         <div class="panel logs"></div>
     </div>
