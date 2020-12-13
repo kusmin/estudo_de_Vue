@@ -4,6 +4,7 @@ new Vue({
         running: false,
         playerLife: 100,
         monsterLife: 100,
+        logs: []
     },
     computed: {
         hasResult() {
@@ -18,13 +19,21 @@ new Vue({
         },
         attack(especial) {
             this.hurt('playerLife', 7, 12, false);
-            this.hurt('monsterLife', 5, 10, false);
+            this.hurt('monsterLife', 5, 10, especial);
         },
         hurt(atr, min, max, especial) {
             const plus = especial ? 5 : 0;
             const hurt = this.getRandom(min + plus, max + plus);
             this[atr] = Math.max(this[atr] - hurt, 0);
 
+        },
+        healAndHunter() {
+            this.heal(10, 15);
+            this.hurt('playerLife', 7, 12, false);
+        },
+        heal(min, max) {
+            const heal = this.getRandom(min, max);
+            this.playerLife = Math.min(this.playerLife + heal, 100);
         },
         getRandom(min, max) {
             const value = Math.random() * (max - min) + min;
