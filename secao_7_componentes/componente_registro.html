@@ -8,15 +8,22 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
 
     <body>
-        <id id="app">
-            <contador></contador>
-            <contador></contador>
-            <contador></contador>
-            <contador></contador>
+        <id id="app1">
+            <contador1></contador1>
+            <contador1></contador1>
+            <contador1></contador1>
+            <contador1></contador1>
+        </id>
+        <hr>
+        <id id="app2">
+            <app-contador></app-contador>
+            <app-contador></app-contador>
+            <app-contador></app-contador>
+            <app-contador></app-contador>
         </id>
         <script>
             // Registro Global
-            Vue.component('contador', {
+            const contador = {
                 template: `
                     <div>
                         <span>{{ contador}}</span>
@@ -29,9 +36,21 @@
                         contador: 0
                     }
                 }
+            }
+            var vm1 = new Vue({
+                el: '#app1',
+                // Registro Local
+                components: {
+                    contador1: contador
+                }
             })
-            new Vue({
-                el: '#app',
+            var vm2 = new Vue({
+                el: '#app2',
+                // Registro Local
+
+                components: {
+                    'app-contador': contador
+                }
             })
         </script>
     </body>
