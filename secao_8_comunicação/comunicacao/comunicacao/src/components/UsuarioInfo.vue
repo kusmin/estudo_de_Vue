@@ -3,6 +3,9 @@
         <h2>As Informações de Usuário</h2>
         <p>Vários detalhes...</p>
         <p>Nome do Usuário: <strong>{{ inverterNome() }}</strong></p>
+        <p>Idade do Usuario: <strong>{{idade}}</strong></p>
+        <button @click="reiniciarNome">Reiniciar Nome</button>
+        <button @click="reiniciarFn()">Reiniciar Nome (Callback)</button>
     </div>
 </template>
 
@@ -16,7 +19,9 @@ export default {
             //     return Array(10).fill(0).join(',')
             // }
             default: 'Renan'
-        }
+        },
+        reiniciarFn: Function,
+        idade: Number
     },
     data() {
         return {
@@ -26,6 +31,14 @@ export default {
     methods: {
         inverterNome() {
             return this.nome.split('').reverse().join('');
+        },
+        reiniciarNome() {
+            const antigo = this.nome
+            //this.nome = 'Pedro'
+            this.$emit('nomeMudou', {
+                novo: Pedro,
+                antigo
+            })
         }
     }
 }
