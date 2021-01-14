@@ -14,7 +14,7 @@
             :reiniciarFn="reiniciarNome" />
             <app-usuario-editar
             :idade="idade"
-            @idadeMudou="idade = $event"/>
+            :reiniciarId="reiniciarIdade"/>
         </div>
     </div>
 </template>
@@ -37,6 +37,9 @@ export default {
         },
         reiniciarNome() {
             this.nome = 'Pedro'
+        },
+        reiniciarIdade() {
+            this.idade = 21;
         }
     }
 }
